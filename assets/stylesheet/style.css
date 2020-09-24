@@ -1,0 +1,170 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 50px;
+  width: 100%;
+  overflow-y: auto;
+  transition: all 2s ease-out;
+}
+
+.first-page {
+  position: absolute;
+  top: 0;
+}
+
+.hide-up {
+  top: -1000px;
+}
+
+.first-page h1 {
+  text-align: center;
+  margin-bottom: 100px;
+  max-width: 470px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.first-page #game-initiator {
+  padding: 10px 20px;
+  background-color: rgba(0, 218, 0, 0.883);
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 2px 7px -2px black;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.first-page #game-initiator:hover {
+  box-shadow: 0 4px 10px -2px black;
+}
+
+.first-page #game-initiator:focus {
+  box-shadow: 0 4px 10px -10px black;
+}
+
+.second-page {
+  position: absolute;
+  right: 1000px;
+}
+
+.show-right {
+  right: 0;
+}
+
+.second-page h1 {
+  text-align: center;
+}
+
+.second-page h3 {
+  text-transform: capitalize;
+  padding-bottom: 50px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.second-page form .input-form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.container form input[type="text"] {
+  padding: 3px 5px;
+  color: rgb(97, 97, 97);
+  text-transform: capitalize;
+  border-radius: 3px;
+  border: 1px solid grey;
+}
+
+.container form label {
+  margin-bottom: 5px;
+}
+
+.symbols {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.symbols .radio-input {
+  margin: 0 2px;
+}
+
+.symbols .radio-input label {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 3px;
+  cursor: pointer;
+  transition: background-color 0.5s ease-out;
+  width: 28px;
+  height: 27px;
+}
+
+.symbols .radio-input input {
+  display: none;
+}
+
+.symbols .radio-input input[type=radio]:checked + label {
+  background-color: rgb(121, 121, 121);
+  border-color: rgb(121, 121, 121);
+}
+
+.warning {
+  visibility: hidden;
+  background-color: rgb(255, 123, 0);
+  color: white;
+  padding: 2px 5px;
+  border-radius: 2px;
+  font-size: 12px;
+  margin-bottom: 30px;
+  margin-top: 2px;
+  width: max-content;
+}
+
+.container form button {
+  background-color: rgb(255, 145, 0);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  padding: 10px 30px;
+  cursor: pointer;
+  box-shadow: 0 2px 7px -2px black;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.container form button:hover {
+  box-shadow: 0 4px 10px -2px black;
+}
+
+.container form button:focus {
+  box-shadow: 0 4px 10px -10px black;
+}
+
+.active {
+  visibility: visible;
+}
