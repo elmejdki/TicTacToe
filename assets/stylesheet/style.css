@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 30px 50px;
-  width: 100%;
+  width: 100vw;
   overflow-y: auto;
   transition: all 2s ease-out;
 }
@@ -21,6 +21,13 @@ body {
 .first-page {
   position: absolute;
   top: 0;
+  height: 100vh;
+  justify-content: center;
+  background-image: url(/assets/images/tictac_back.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: rgb(47, 15, 0);
 }
 
 .hide-up {
@@ -58,18 +65,23 @@ body {
 
 .second-page {
   position: absolute;
-  right: 1000px;
+  right: 2000px;
+}
+
+.third-page {
+  position: absolute;
+  right: 2000px;
 }
 
 .show-right {
   right: 0;
 }
 
-.second-page h1 {
+.conatiner h1 {
   text-align: center;
 }
 
-.second-page h3 {
+.container h3 {
   text-transform: capitalize;
   padding-bottom: 50px;
   max-width: 300px;
@@ -83,7 +95,7 @@ body {
   width: 300px;
 }
 
-.second-page form .input-form {
+.container form .input-form {
   display: flex;
   flex-direction: column;
   width: 200px;
@@ -123,13 +135,22 @@ body {
   height: 27px;
 }
 
+.symbols .radio-input label.disabled {
+  background-color: rgb(128, 0, 0);
+}
+
 .symbols .radio-input input {
   display: none;
 }
 
-.symbols .radio-input input[type=radio]:checked + label {
-  background-color: rgb(121, 121, 121);
-  border-color: rgb(121, 121, 121);
+.second-page .symbols .radio-input input[type=radio]:checked + label {
+  background-color: rgb(0, 209, 10);
+  border-color: rgb(0, 209, 10);
+}
+
+.third-page .symbols .radio-input input[type=radio]:checked + label {
+  background-color: rgb(0, 209, 10);
+  border-color: rgb(0, 209, 10);
 }
 
 .warning {

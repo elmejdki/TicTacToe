@@ -8,13 +8,13 @@
   <title>TicTacToe Game</title>
 </head>
 <body>
-  <div class="container first-page hide-up">
+  <div class="container first-page">
     <h1 class="">Welcome, to the Tic Tac Toe Game, please click on the green button to start playing</h1>
 
     <button id="game-initiator">Start !</button>
   </div>
 
-  <div class="container second-page show-right">
+  <div class="container second-page">
     <h1>Player 1</h1>
     <h3>Please enter your full name and choose a symbol</h3>
 
@@ -31,6 +31,26 @@
         <span class="warning symbol-warning">please select a symbol</span>
 
         <button id="player1-submit-btn" type="submit">Save</button>
+    </form>
+  </div>
+
+  <div class="container third-page">
+    <h1>Player 2</h1>
+    <h3>Please enter your full name and choose a symbol</h3>
+
+    <form>
+        <div class="input-form">
+          <label for="player2-name">Full Name</label>
+          <input type="text" id="player2-name">
+          <span class="warning name-warning">please type your name</span>
+        </div>
+
+        <div id="player2-symbols" class="symbols">
+
+        </div>
+        <span class="warning symbol-warning">please select a symbol</span>
+
+        <button id="player2-submit-btn" type="submit">Save</button>
     </form>
   </div>
 
