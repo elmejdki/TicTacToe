@@ -3,6 +3,8 @@ const gameBorad = (function () {
   const player1 = { score: 0 };
   const player2 = { score: 0 };
 
+  let currentPlayer = player1;
+
   function setPlayersInfo(p1, p2) {
     player1.name = p1.getName();
     player1.symbol = p1.getSymbol();
@@ -11,13 +13,73 @@ const gameBorad = (function () {
     player2.symbol = p2.getSymbol();
 
     displayController.renderPlayersInfo(player1, player2);
+    displayController.updateTurn(currentPlayer);
     const boardContainer = displayController.renderBoard(board);
     activateBoard(boardContainer);
   }
 
   function activateBoard(boardDOM) {
     const squares = boardDOM.querySelectorAll('span');
-    console.log(squares);
+    squares.forEach(square => {
+      square.addEventListener('click', handleClick);
+    });
+  }
+
+  function isWin() {
+    for (let i = 0; i < 9; i += 3) {
+      if (board[i] && board[i] === board[i + 1] && board[i + 2] === board[i + 1]) {
+        return true;
+      }
+    }
+
+    for (let i = 0; i < 9; i += 1) {
+      if (board[i] && board[i] === board[i + 3] && board[i + 6] === board[i + 3]) {
+        return true;
+      }
+    }
+
+    if (board[0] && board[0] === board[4] && board[8] === board[4]) {
+      return true;
+    }
+
+    if (board[2] && board[2] === board[4] && board[6] === board[4]) {
+      return true;
+    }
+
+    return false;
+  }
+
+  function isDraw() {
+    return (
+      board[0]
+      && board[1]
+      && board[2]
+      && board[3]
+      && board[4]
+      && board[5]
+      && board[6]
+      && board[7]
+      && board[8]);
+  }
+
+  function handleClick(event) {
+    const index = Number(event.target.getAttribute('data-index'));
+    if (board[index]) {
+      displayController.showWarning();
+    } else {
+      board[index] = currentPlayer.symbol;
+      const boardContainer = displayController.renderBoard(board);
+      if (isWin()) {
+        displayController.congrats(currentPlayer);
+        displayController.renderPlayersInfo(player1, player2);
+      } else if (isDraw()) {
+        displayController.showDraw();
+      } else {
+        currentPlayer = currentPlayer === player1 ? player2 : player1;
+        displayController.updateTurn(currentPlayer);
+        activateBoard(boardContainer);
+      }
+    }
   }
 
   return { setPlayersInfo };
@@ -81,6 +143,13 @@ const displayController = (function () {
   const p2Score = document.querySelector('#player2-info .score span');
 
   const boardHolder = document.querySelector('#board-container .board');
+
+  const cellWarning = document.querySelector('.cell-warning');
+
+  const resetButton = document.querySelector('#board-container button');
+  const winingStatus = document.querySelector('#board-container .winning-status');
+  const turnContainer = document.querySelector('#board-container .turn');
+  const turnInContainer = document.querySelector('#board-container .turn span');
 
   intiateButton.addEventListener('click', getPlayer1Form);
   player1Submit.addEventListener('click', submitForm1);
@@ -203,7 +272,29 @@ const displayController = (function () {
     p2Score.textContent = p2.score;
   }
 
-  return { renderBoard, renderPlayersInfo };
+  function congrats(player) {
+    resetButton.classList.remove('d-none');
+    turnContainer.classList.add('d-none');
+    winingStatus.textContent = `${player.name} is the winner`;
+    winingStatus.classList.remove('d-none');
+    player.score += 1;
+  }
+
+  function showWarning() {
+    cellWarning.classList.remove('d-none');
+
+    setTimeout(() => {
+      cellWarning.classList.add('d-none');
+    }, 3000);
+  }
+
+  function updateTurn(player) {
+    turnInContainer.textContent = player.symbol;
+  }
+
+  return {
+    renderBoard, renderPlayersInfo, congrats, showWarning, updateTurn
+  };
 }());
 
 const playerFactory = function (name, symbol) {

@@ -27,7 +27,6 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  color: rgb(47, 15, 0);
 }
 
 .hide-up {
@@ -40,6 +39,8 @@ body {
   max-width: 470px;
   font-weight: bold;
   text-transform: capitalize;
+  color: white;
+  text-shadow: 0 0 15px black;
 }
 
 button {
@@ -210,7 +211,7 @@ button:focus {
 }
 
 #board-container button {
-  background-color: red;
+  background-color: rgb(47, 0, 255);
 }
 
 #board-container .board {
@@ -239,6 +240,41 @@ button:focus {
   font-size: 40px;
 }
 
+.w-100 {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cell-warning {
+  padding: 3px 5px;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  background-color: red;
+  margin-bottom: 10px;
+}
+
+.d-none {
+  display: none;
+}
+
+#board-container .turn {
+  margin-bottom: 40px;
+  font-size: 23px;
+  color: white;
+  text-shadow: 0 0 5px black;
+  transition: all 1s ease-in;
+}
+
+#board-container .winning-status {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  color: green;
+}
+
 @media only screen and (max-width: 767px) {
   .final-page {
     flex-direction: column;
@@ -256,5 +292,9 @@ button:focus {
 
   #board-container {
     order: 3;
+  }
+
+  .w-100 {
+    width: fit-content;
   }
 }
