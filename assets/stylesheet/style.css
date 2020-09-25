@@ -23,7 +23,7 @@ body {
   top: 0;
   height: 100vh;
   justify-content: center;
-  background-image: url(/assets/images/tictac_back.jpg);
+  background-image: url(/TicTacToe/assets/images/tictac_back.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
