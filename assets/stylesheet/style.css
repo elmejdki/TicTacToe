@@ -237,6 +237,7 @@ button:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   font-size: 40px;
 }
 
@@ -273,6 +274,7 @@ button:focus {
   font-weight: 400;
   margin-bottom: 30px;
   color: green;
+  text-align: center;
 }
 
 @media only screen and (max-width: 767px) {

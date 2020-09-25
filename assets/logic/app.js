@@ -18,6 +18,18 @@ const gameBorad = (function () {
     activateBoard(boardContainer);
   }
 
+  function resetBoard() {
+    for (let i = 0; i < board.length; i += 1) {
+      board[i] = false;
+    }
+
+    currentPlayer = currentPlayer === player1 ? player2 : player1;
+
+    displayController.updateTurn(currentPlayer);
+    const boardContainer = displayController.renderBoard(board);
+    activateBoard(boardContainer);
+  }
+
   function activateBoard(boardDOM) {
     const squares = boardDOM.querySelectorAll('span');
     squares.forEach(square => {
@@ -64,6 +76,7 @@ const gameBorad = (function () {
 
   function handleClick(event) {
     const index = Number(event.target.getAttribute('data-index'));
+
     if (board[index]) {
       displayController.showWarning();
     } else {
@@ -82,7 +95,7 @@ const gameBorad = (function () {
     }
   }
 
-  return { setPlayersInfo };
+  return { setPlayersInfo, resetBoard };
 }());
 
 const displayController = (function () {
@@ -151,9 +164,19 @@ const displayController = (function () {
   const turnContainer = document.querySelector('#board-container .turn');
   const turnInContainer = document.querySelector('#board-container .turn span');
 
+  const resetBtn = document.getElementById('reset-btn');
+
   intiateButton.addEventListener('click', getPlayer1Form);
   player1Submit.addEventListener('click', submitForm1);
   player2Submit.addEventListener('click', submitForm2);
+  resetBtn.addEventListener('click', resetGame);
+
+  function resetGame() {
+    winingStatus.classList.add('d-none');
+    resetBtn.classList.add('d-none');
+    turnContainer.classList.remove('d-none');
+    gameBorad.resetBoard();
+  }
 
   function getPlayer1Form() {
     firstPage.classList.add('hide-up');
@@ -280,6 +303,13 @@ const displayController = (function () {
     player.score += 1;
   }
 
+  function showDraw() {
+    resetButton.classList.remove('d-none');
+    turnContainer.classList.add('d-none');
+    winingStatus.textContent = 'it\'s a draw';
+    winingStatus.classList.remove('d-none');
+  }
+
   function showWarning() {
     cellWarning.classList.remove('d-none');
 
@@ -293,7 +323,7 @@ const displayController = (function () {
   }
 
   return {
-    renderBoard, renderPlayersInfo, congrats, showWarning, updateTurn
+    renderBoard, renderPlayersInfo, congrats, showWarning, updateTurn, showDraw,
   };
 }());
 
