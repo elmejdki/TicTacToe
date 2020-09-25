@@ -10,7 +10,14 @@ const gameBorad = (function () {
     player2.name = p2.getName();
     player2.symbol = p2.getSymbol();
 
-    // TODO: Add users info to the board.
+    displayController.renderPlayersInfo(player1, player2);
+    const boardContainer = displayController.renderBoard(board);
+    activateBoard(boardContainer);
+  }
+
+  function activateBoard(boardDOM) {
+    const squares = boardDOM.querySelectorAll('span');
+    console.log(squares);
   }
 
   return { setPlayersInfo };
@@ -65,6 +72,15 @@ const displayController = (function () {
   let player2Symbol;
   const player1SymbolWarning = document.querySelector('.second-page .symbol-warning');
   const player2SymbolWarning = document.querySelector('.third-page .symbol-warning');
+
+  const p1NameHolder = document.querySelector('#player1-info .name');
+  const p2NameHolder = document.querySelector('#player2-info .name');
+  const p1SymbolHolder = document.querySelector('#player1-info .symbol');
+  const p2SymbolHolder = document.querySelector('#player2-info .symbol');
+  const p1Score = document.querySelector('#player1-info .score span');
+  const p2Score = document.querySelector('#player2-info .score span');
+
+  const boardHolder = document.querySelector('#board-container .board');
 
   intiateButton.addEventListener('click', getPlayer1Form);
   player1Submit.addEventListener('click', submitForm1);
@@ -162,6 +178,32 @@ const displayController = (function () {
       parent.appendChild(radioContainer);
     });
   }
+
+  function renderBoard(board) {
+    boardHolder.innerHTML = `<span data-index="0">${board[0] ? board[0] : ''}</span>
+      <span data-index="1" class="middle-y">${board[1] ? board[1] : ''}</span>
+      <span data-index="2">${board[2] ? board[2] : ''}</span>
+      <span data-index="3" class="middle-x">${board[3] ? board[3] : ''}</span>
+      <span data-index="4" class="middle-y middle-x">${board[4] ? board[4] : ''}</span>
+      <span data-index="5" class="middle-x">${board[5] ? board[5] : ''}</span>
+      <span data-index="6">${board[6] ? board[6] : ''}</span>
+      <span data-index="7" class="middle-y">${board[7] ? board[7] : ''}</span>
+      <span data-index="8">${board[8] ? board[8] : ''}</span>`;
+
+    return boardHolder;
+  }
+
+  function renderPlayersInfo(p1, p2) {
+    p1NameHolder.textContent = p1.name;
+    p1SymbolHolder.textContent = p1.symbol;
+    p1Score.textContent = p1.score;
+
+    p2NameHolder.textContent = p2.name;
+    p2SymbolHolder.textContent = p2.symbol;
+    p2Score.textContent = p2.score;
+  }
+
+  return { renderBoard, renderPlayersInfo };
 }());
 
 const playerFactory = function (name, symbol) {

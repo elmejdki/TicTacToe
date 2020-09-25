@@ -31,14 +31,14 @@ body {
 }
 
 .hide-up {
-  top: -1000px;
+  top: -2000px;
 }
 
 .first-page h1 {
   text-align: center;
   margin-bottom: 100px;
   max-width: 470px;
-  font-weight: 400;
+  font-weight: bold;
   text-transform: capitalize;
 }
 
