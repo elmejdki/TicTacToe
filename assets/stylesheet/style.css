@@ -42,17 +42,28 @@ body {
   text-transform: capitalize;
 }
 
-.first-page #game-initiator {
-  padding: 10px 20px;
-  background-color: rgba(0, 218, 0, 0.883);
-  border: none;
-  cursor: pointer;
+button {
   color: white;
+  border: none;
+  border-radius: 3px;
   font-weight: bold;
-  border-radius: 5px;
+  padding: 10px 30px;
+  cursor: pointer;
   box-shadow: 0 2px 7px -2px black;
   outline: none;
   text-transform: uppercase;
+}
+
+button:hover {
+  box-shadow: 0 4px 10px -2px black;
+}
+
+button:focus {
+  box-shadow: 0 4px 10px -10px black;
+}
+
+.first-page #game-initiator {
+  background-color: rgba(0, 218, 0, 0.883);
 }
 
 .first-page #game-initiator:hover {
@@ -167,25 +178,83 @@ body {
 
 .container form button {
   background-color: rgb(255, 145, 0);
-  color: white;
-  border: none;
-  border-radius: 3px;
-  font-weight: bold;
-  padding: 10px 30px;
-  cursor: pointer;
-  box-shadow: 0 2px 7px -2px black;
-  outline: none;
-  text-transform: uppercase;
-}
-
-.container form button:hover {
-  box-shadow: 0 4px 10px -2px black;
-}
-
-.container form button:focus {
-  box-shadow: 0 4px 10px -10px black;
 }
 
 .active {
   visibility: visible;
+}
+
+.final-page {
+  position: absolute;
+  top: -1000px;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: center;
+  padding: 30px 0;
+}
+
+.final-page .info {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.show-up {
+  top: 0;
+}
+
+#board-container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#board-container button {
+  background-color: red;
+}
+
+#board-container .board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 250px;
+  height: 250px;
+  margin-bottom: 50px;
+}
+
+.board .middle-x {
+  border-top: 5px solid grey;
+  border-bottom: 5px solid grey;
+}
+
+.board .middle-y {
+  border-left: 5px solid grey;
+  border-right: 5px solid grey;
+}
+
+.board span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+@media only screen and (max-width: 767px) {
+  .final-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #player1-info {
+    order: 1;
+  }
+
+  #player2-info {
+    order: 2;
+    padding-top: 30px;
+  }
+
+  #board-container {
+    order: 3;
+  }
 }

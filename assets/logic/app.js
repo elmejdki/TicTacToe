@@ -1,5 +1,22 @@
 const gameBorad = (function () {
   const board = [];
+  const player1 = { score: 0 };
+  const player2 = { score: 0 };
+
+  function setPlayersInfo(p1, p2) {
+    player1.name = p1.getName();
+    player1.symbol = p1.getSymbol();
+
+    player2.name = p2.getName();
+    player2.symbol = p2.getSymbol();
+
+    // TODO: Add users info to the board.
+  }
+
+  return { setPlayersInfo };
+}());
+
+const displayController = (function () {
   const symbols = [
     { value: '⭐', selected: false },
     { value: '✌', selected: false },
@@ -24,6 +41,7 @@ const gameBorad = (function () {
     { value: '⚔️', selected: false },
     { value: '📌', selected: false },
   ];
+
   let player1;
   let player2;
 
@@ -31,6 +49,7 @@ const gameBorad = (function () {
   const firstPage = document.querySelector('.first-page');
   const secondPage = document.querySelector('.second-page');
   const thirdPage = document.querySelector('.third-page');
+  const finalPage = document.querySelector('.final-page');
 
   const player1Symbols = document.getElementById('player1-symbols');
   const player2Symbols = document.getElementById('player2-symbols');
@@ -46,16 +65,12 @@ const gameBorad = (function () {
   let player2Symbol;
   const player1SymbolWarning = document.querySelector('.second-page .symbol-warning');
   const player2SymbolWarning = document.querySelector('.third-page .symbol-warning');
-  // TODO: need to be removed
-  // TODO: use settimeout to remove this item from the dom.
-  // player1Symbols.remove();
-  // renderSymbols(player2Symbols, 2);
 
-  intiateButton.addEventListener('click', getPlayer1From);
+  intiateButton.addEventListener('click', getPlayer1Form);
   player1Submit.addEventListener('click', submitForm1);
   player2Submit.addEventListener('click', submitForm2);
 
-  function getPlayer1From() {
+  function getPlayer1Form() {
     firstPage.classList.add('hide-up');
     secondPage.classList.add('show-right');
 
@@ -86,7 +101,7 @@ const gameBorad = (function () {
       setTimeout(() => {
         thirdPage.classList.add('show-right');
         renderSymbols(player2Symbols, 2);
-      }, 2000);
+      }, 500);
     }
   }
 
@@ -111,9 +126,12 @@ const gameBorad = (function () {
       player2 = playerFactory(player2Name.value, player2Symbol.value);
       symbols[Number(player2Symbol.getAttribute('data-id'))].selected = true;
       thirdPage.classList.remove('show-right');
+
+      gameBorad.setPlayersInfo(player1, player2);
+
       setTimeout(() => {
-        // finalPage.classList.add('show-up');
-      }, 2000);
+        finalPage.classList.add('show-up');
+      }, 500);
     }
   }
 
@@ -144,12 +162,6 @@ const gameBorad = (function () {
       parent.appendChild(radioContainer);
     });
   }
-
-  function renderBoard() {
-    console.log(board);
-  }
-
-  renderBoard();
 }());
 
 const playerFactory = function (name, symbol) {
