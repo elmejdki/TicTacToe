@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://elmejdki.github.io/TicTacToe/)
 
 
 ## Getting Started
