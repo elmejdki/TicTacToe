@@ -1,73 +1,47 @@
-# Project Name
+# Tic Tac Toe
 
-> One paragraph statement about the project.
+> This is a Tic Tac Toe Game build based on my own insperation and design, it start with a welcome page then the game asks for players information so they can start the game, give it a try I'm sure you will like it.
 
-![screenshot](./app_screenshot.png)
-
-Additional description about the project and its features.
+![screenshot](https://user-images.githubusercontent.com/34653764/94308883-1b23b880-ff6f-11ea-8beb-7ea156f55cb1.png)
 
 ## Built With
 
-- Major languages,
-- frameworks,
-- technologies used
+- HTML,
+- CSS,
+- Vanilla JavaScript
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://elmejdki.github.io/TicTacToe/)
 
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
-
+To get started with this project you need online a code editor and a browser, First clone the this repo in a local folder and then open the game using a browser, we welcome any improments so don't hesitate to add some code and submit a pull request.
 
 ## Authors
 
-👤 **Author1**
+👤 **Zakariae El Mejdki**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [@elmejdki](https://github.com/elmejdki)
+- Twitter: [@zakariae_elmejdki](https://twitter.com/zakariaemejdki)
+- Linkedin: [Zakariae El Mejdki](https://www.linkedin.com/in/zakariaeelmejdki/)
 
-👤 **Author2**
+👤 **Chukwuebuka Paul Ajuizeogu**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [@misterpaul4](https://github.com/misterpaul4)
+- Twitter: [@paulajuze](https://twitter.com/paulajuze)
+- Linkedin: [Chukwuebuka Paul Ajuizeogu](hhttps://www.linkedin.com/in/chukwuebuka-paul-ajuizeogu/)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/elmejdki/TicTacToe/issues).
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
 
 ## 📝 License
 
